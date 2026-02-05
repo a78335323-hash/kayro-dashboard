@@ -18,7 +18,7 @@ export function middleware(req: NextRequest) {
 
   const session = req.cookies.get("dash_session")?.value;
 
-  if (session !== "ok") {
+  if (session !== "1") {
     const url = req.nextUrl.clone();
     url.pathname = "/login";
     return NextResponse.redirect(url);
