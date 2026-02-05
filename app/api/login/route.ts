@@ -18,12 +18,15 @@ export async function POST(req: Request) {
   }
 
   const res = NextResponse.json({ ok: true });
+
+  // ✅ SET COOKIE SESSIONE
   res.cookies.set("dash_session", "1", {
     httpOnly: true,
-    secure: true,
+    secure: true, // su Vercel è ok
     sameSite: "lax",
     path: "/",
     maxAge: 60 * 60 * 24 * 30, // 30 giorni
   });
+
   return res;
 }
