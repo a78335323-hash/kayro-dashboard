@@ -1,11 +1,8 @@
-export default function DashboardPage() {
+export default function Dashboard() {
   return (
-    <main style={{ padding: 24 }}>
-      <h1>Dashboard</h1>
-      <p>Se vedi questa pagina, sei dentro ✅</p>
-      <p>
-        <a href="/api/logout">Logout</a>
-      </p>
-    </main>
+    <div style={{ padding: 40, color: "white" }}>
+      <h1>Dashboard sbloccata 🔓</h1>
+    </div>
   );
 }
+
