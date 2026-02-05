@@ -34,7 +34,7 @@ export default function LoginPage() {
       <img
         src="/login-1.jpg"
         alt="cover"
-        className="w-full h-64 object-cover"
+        className="w-full h-[180px] sm:h-[240px] md:h-[280px] object-contain"
       />
 
       {/* CONTENUTO */}
