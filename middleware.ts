@@ -4,16 +4,22 @@ import type { NextRequest } from "next/server";
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
-  // Lascia passare login e api
-  if (pathname.startsWith("/login") || pathname.startsWith("/api")) {
+  // Lascia passare login e API auth
+  if (
+    pathname.startsWith("/login") ||
+    pathname.startsWith("/api/login") ||
+    pathname.startsWith("/api/logout") ||
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/favicon.ico") ||
+    pathname.startsWith("/login-1") ||
+    pathname.startsWith("/login-2")
+  ) {
     return NextResponse.next();
   }
 
-  // Cookie di sessione
   const session = req.cookies.get("dash_session")?.value;
 
-  // Se non c’è sessione → manda a /login
-  if (!session) {
+  if (session !== "ok") {
     const url = req.nextUrl.clone();
     url.pathname = "/login";
     return NextResponse.redirect(url);
@@ -23,5 +29,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next|favicon.ico).*)"],
+  matcher: ["/((?!_next/static|_next/image).*)"],
 };
