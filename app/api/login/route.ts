@@ -21,8 +21,8 @@ export async function POST(req: Request) {
 
   res.cookies.set("dash_session", "1", {
   httpOnly: true,
-  secure: process.env.NODE_ENV === "production",
-  sameSite: "lax",
+  secure: true,
+  sameSite: "none", // 🔥 QUESTO È IL FIX
   path: "/",
   maxAge: 60 * 60 * 24 * 30,
 });
