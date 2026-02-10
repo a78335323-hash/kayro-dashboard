@@ -25,8 +25,9 @@ export default function LoginPage() {
       setError("Password errata");
       return;
     }
-
-    window.location.href = "/dashboard";
+  import { useRouter } from "next/navigation";
+  const router = useRouter();
+    router.push("/dashboard");
   }
 
   return (
