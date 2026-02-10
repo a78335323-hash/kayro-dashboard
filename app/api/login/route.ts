@@ -21,10 +21,10 @@ export async function POST(req: Request) {
 
   res.cookies.set("dash_session", "1", {
   httpOnly: true,
-  secure: true,
-  sameSite: "none", // 🔥 QUESTO È IL FIX
+  sameSite: "lax",
   path: "/",
   maxAge: 60 * 60 * 24 * 30,
+  // ❌ TOGLI secure
 });
 
   return res;
